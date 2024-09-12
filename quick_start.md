@@ -43,7 +43,7 @@ will be different.
    5. After both files are copied into place, reload the udev rules by running `sudo udevadm control --reload`
 5. Now we can try connecting to the board
    1. Plug the RRIV board into the computer using the USB port.   
-   2. Run the command `rrivctl connect`
+   2. Run the command `rrivctl watch`
 
 
 ## Developer Setup
