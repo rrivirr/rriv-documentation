@@ -70,3 +70,4 @@
   * [Security](organization/security.md)
   * [Tools](organization/tools/README.md)
     * [Joplin Notes](organization/tools/joplin-notes.md)
+    * [Proton Pass](organization/tools/proton-pass.md)
