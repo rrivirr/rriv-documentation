@@ -1,11 +1,11 @@
 # Joplin Notes
 
-We are trying out sharing a synced Joplin account as a way to more easily share loosely notes about topics we are exploring, building, and debugging.\
+We are trying out sharing a synced Joplin account as a way to more easily share loosely notes about topics we are exploring, building, and debugging. \
 \
 \## Setup
 
 1. Install Joplin [https://joplinapp.org/help/install/](https://joplinapp.org/help/install/)
-2. Get access to the S3 sync credentials
+2. Get access to the S3 sync credentials (in Proton Pass)
 3. Open Joplin, and from the file menu...
    1. Choose 'switch profile'
    2. Choose 'create new profile'
@@ -18,7 +18,8 @@ We are trying out sharing a synced Joplin account as a way to more easily share 
 6. Enter the credentials provided in (2)
 7. Click 'Check sychronization settings'
 8. Click 'Apply'
-9. You are done, the shared notes should sync now.
+9. Go to Tools > Options > Encryption and enter the password (also in Proton Pass)
+10. You are done, the shared notes should sync now.
 
 
 
