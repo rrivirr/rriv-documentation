@@ -2,9 +2,10 @@
 
 This organization chart is a work in progress, as we bootstrap our organizational structure and key contributors.
 
-Typically contributors listed here have a leadership role or make significant, sustained contributions to the platfform. 
+Typically contributors listed here have a leadership role or make significant, sustained contributions to the platfform.
 
 ## Directors
+
 * Zaven Arra - Executive Director & Founder
 * Jake Hosen - Director & Founder
 
@@ -16,7 +17,7 @@ Typically contributors listed here have a leadership role or make significant, s
 
 ### Embedded Software Team
 
-* Ken Chong - Core Contributor
+
 
 ### Hardware Team
 
@@ -27,9 +28,11 @@ TBD
 * Matty Interrupt - Client Development Lead
 
 ### Mobile
+
 ( No mobile functionality currently scheduled )
 
 ### Cloud
+
 ( No cloud functionality currently scheduled )
 
 ## Operations & Communication

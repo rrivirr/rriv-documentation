@@ -1,6 +1,7 @@
-# Copy this file to /etc/udev/rules.d/
-# If rules fail to reload automatically, you can refresh udev rules
-# with the command "udevadm control --reload"
+# To install this file
+# 1. Download this file to your computer
+# 2. Copy this file to /etc/udev/rules.d/ using a command such as `sudo cp ~/Downloads/69-rriv.rules /etc/udev/rules.d/`
+# 3. Reload udev rules using the command `sudo udevadm control --reload`
 
 #
 # This file is available under the GNU General Public License v2.0
