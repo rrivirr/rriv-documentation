@@ -1,4 +1,4 @@
-# CLI commands
+# V1 CLI Commands - Legacy
 
 ## Overview
 
