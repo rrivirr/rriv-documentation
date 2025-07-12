@@ -1,4 +1,4 @@
-# Hardware Serial Interface
+# RRIVCTL Commands (V2 CLI, Current)
 
 ## Overview
 
