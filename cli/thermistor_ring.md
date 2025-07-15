@@ -17,8 +17,8 @@ Note: Calibration requires two known, stable temperature environments that the s
 3. Place the sensor in a second, different known temperature environment, let it equilibrate, and set the first calibration point  (here we are calibrating when the known temperature is 19.4°C, you must enter the correct temperater for your second temperature environment)<br>
 ```rrivctl calibrate sensor RING01 point 19.4```
 5. This command will list the current calibration values, which can be used to check your calibration points<br>
-```rivctl calibrate sensor RING01 list```
+```rrivctl calibrate sensor RING01 list```
 6. Apply the calibration points to the raw data.  A linear model is fit to the raw data.<br>
-```rivctl calibrate sensor RING01 fit```
+```rrivctl calibrate sensor RING01 fit```
 7. Now we can run the command below and we will see all the configs including the calibration.<br>
-```rivctl sensor get RING01```
+```rrivctl sensor get RING01```
