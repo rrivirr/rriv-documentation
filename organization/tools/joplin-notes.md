@@ -5,7 +5,7 @@ We are trying out sharing a synced Joplin account as a way to more easily share 
 \## Setup
 
 1. Install Joplin [https://joplinapp.org/help/install/](https://joplinapp.org/help/install/)
-2. Get access to the S3 sync credentials (in Proton Pass)
+2. Get access to the Joplin Sync S3 Keys (in Proton Pass, ask a team member)
 3. Open Joplin, and from the file menu...
    1. Choose 'switch profile'
    2. Choose 'create new profile'
@@ -15,11 +15,12 @@ We are trying out sharing a synced Joplin account as a way to more easily share 
    2. At the bottom of the screen, there is text that mentions 'Self Hosting' and gives a link.
    3. Click this link ![](../../.gitbook/assets/image.png)
 5. For 'Sychronization Target' select S3
-6. Enter the credentials provided in (2)
+6. Enter the credentials provided in the Joplin Sync S3 Keys that you got in (2)
 7. Click 'Check sychronization settings'
 8. Click 'Apply'
-9. Go to Tools > Options > Encryption and enter the password (also in Proton Pass)
-10. You are done, the shared notes should sync now.
+9. Get access to the Joplin Encryption Key (in Proton Pass, ask a team member)
+10. Go to Tools > Options > Encryption and enter the Joplin Encryption Key that you got in (9)
+11. You are done, the shared notes should sync now.
 
 
 
