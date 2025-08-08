@@ -27,7 +27,7 @@ Note: Calibration requires two known, stable temperature environments that the s
 Thermistor ring has a heater that turns on and off at regular intervals. This is variable depending on flow conditions. The heater is controlled by a relay that is controlled by GPIO Pin 8. Examples of configuration json files that can be used or edited for configuration are located in rriv-ctl/configurations. There is an example file called ```heater.json``` that has the correct format for configuring heater timing.
 
 ### Thermistor Ring Heater Control Commands
-1. View the list of sensors.
+1. View the list of sensors.<br>
 ```rrivctl list sensor```
-2. Apply ```heater.json``` file as the heater configuration
+2. Apply ```heater.json``` file as the heater configuration<br>
 ```rrivctl set sensor HEATER -f configurations/heater.json```
