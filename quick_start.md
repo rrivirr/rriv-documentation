@@ -57,11 +57,9 @@ To get set up to write new code for the rriv firmware and/or to install compiled
    2. rustup toolchain install nightly
    3. rustup target add thumbv7m-none-eabi
    4. rustup default nightly
-   5. cargo install probe-rs --features cli
+   5. install probe-rs ```curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh```
 3. Install VSCode
-4. Install required VSCode extensions
-   1. rust-analyzer
-   2. probe-rs-debugger
+4. Install required VSCode extension: rust-analyzer
 6. Install udev rules
    1.  The following two files must be copied into the /etc/udev/rules.d/ folder on your computer
       1.  https://github.com/rrivirr/rriv-documentation/blob/main/hardware/udev/69-probe-rs.rules
