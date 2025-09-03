@@ -48,7 +48,7 @@ Any object can potentially support a calibration routine
 
 Custom actions
 
-\
+
 
 
 ## Commands
@@ -118,8 +118,8 @@ connection:
 mode <mode_request>
 ```
 
-\
-\### Sensor
+
+### Sensor
 
 Commands to configure installed sensors.
 
@@ -202,33 +202,7 @@ List all configured sensors in a tabluar format
 * reset sensor {property: 'calibration'}
 * rrivctl shorthand: reset sensor $property
 
-\
-\### Actuator
-
-Summary: actuator set, get, rm, ls
-
-#### set actuator \[id] {...}
-
-Creates or updates an actuator configuration. If an actuator with the provided id is currently configured, it is updated. Otherwise, a new sensor configuration is created.
-
-#### get actuator \<id>
-
-Get a actuator configuration, corresponding to the id. When called with a parameter argument, returns just the parameter requested. Otherwise returns the entire JSON blob.
-
-If id is not specified, returns a JSON array containing all actuator configurations.
-
-#### rm actuator \<id>
-
-Remove the actuator configuration matching the corresponding id
-
-#### ls actuator
-
-List all configured actuators in a tabluar format
-
-#### reset actuator {property: $property}
-
-\
-\### Telemeter
+### Telemeter
 
 Summary: telemeter set, get, rm, ls
 
@@ -252,8 +226,8 @@ List all configured telemeters in a tabluar format
 
 #### reset telemeter {property: $property}
 
-\
-\### Board\
+
+### Board
 The commands access features of the board itself and firmware metadata
 
 This consists of three types of commands
@@ -318,8 +292,8 @@ run board {'commmand' : 'restart'}
 | exADC    | enable/disable exADC               |
 | 3v3Boost | enable/disable 3v3 boost converted |
 
-\
-\### Device\
+
+### Device
 Top level commands that dump and load all for the device in one payload
 
 #### get
