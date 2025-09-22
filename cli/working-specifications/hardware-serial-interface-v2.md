@@ -1,10 +1,12 @@
-# Hardware Serial Interface
+---
+description: >-
+  This document defines a set of commands for configuring the rriv firmware
+  installed on a compliant PCB.
+---
+
+# Hardware Serial Interface Original Spec
 
 ## Overview
-
-This document defines a set of commands for configuring the rriv firmware installed on a compliant PCB.
-
-
 
 Command documentation conventions:
 
@@ -28,29 +30,35 @@ Creates or updates a resource.
 
 ### get
 
-Gets current parameters of a resource
+Gets current parameters of a resource, in a machine readable format.
 
-
-
-### remove
+### rm
 
 Removes a resource
 
-### list
+### reset
 
-Lists all resources of a particular type
+Resets parameters of an object back to defaults. Can accept a property to focus reset on that property.
+
+### ls
+
+Lists all resources of a particular tyle, in a tabular human readable format. This is not part of the standard, but implemented for ease of development. rrivctl does support this command, but by calling `get` and filtering the results down to a human readable format.
+
+Consider if ls should be an abbreivate response for telemetry reasons, as in an index of objects without full properties.
 
 ### calibrate
 
-Performs an (optionally implemented) calibration on a resource
+Any object can potentially support a calibration routine
 
+### run
 
+Custom actions
 
-## Objects and Commands
+## Commands
 
 ### Datalogger
 
-Data logger identification, timing, and metadata.
+Configurate data logger timing and metadata.
 
 #### set datalogger {...}
 
@@ -58,29 +66,28 @@ Data logger identification, timing, and metadata.
 
 ```
 {	
-	"logger_name" : "my device",
-	"site_name" : "OAK2:,
-	"deployment_identifier" : "X12",
-	"interactive_logging_interval" : 10,
-	"sleep_interval" : 1,
-	"start_up_delay" : 1,
-	"bursts_per_cycle" : 10,
-	"burst_interval" : 2,
-	"enable_telemetry" : true
+	"logger_name":"my device",
+	"site_name":"OAK2:,
+	"deployment_identifier":"X12",
+	"interval": 10,
+	"burst_number": 10,
+	"start_up_delay": 1,
+	"burst_delay": 2,
+	"user_note": "none",
+	"user_value": 12
 }
 ```
 
-| Parameter                      | Data Type | Description                                                          |
-| ------------------------------ | --------- | -------------------------------------------------------------------- |
-| logger\_name                   | string    | a name for the logger                                                |
-| site\_name                     | string    | site code                                                            |
-| deployment\_identifier         | string    | identify a deployment                                                |
-| interactive\_logging\_interval | int       | seconds to wait between measurements during interactive logging      |
-| sleep\_interval                | int       | minutes between wakes while deployed                                 |
-| start\_up\_delay               | int       | minutes to wait between wakeup and measurement sensor initialization |
-| bursts\_per\_cycle             | int       | number of bursts to run during each measurement cycle                |
-| burst\_interval                | int       | minutes between burst cycle initialization                           |
-| enable\_telemetry              | bool      | enable or disable LoRaWAN telemetry                                  |
+| Parameter              | Data Type | Description                                                          |
+| ---------------------- | --------- | -------------------------------------------------------------------- |
+| logger\_name           | string    | a name for the logger                                                |
+| site\_name             | string    | site code                                                            |
+| deployment\_identifier | string    | identify a deployment                                                |
+| wake\_interval         | int       | minutes between wakes while deployed                                 |
+| warm\_up\_delay        | int       | minutes to wait between wakeup and measurement sensor initialization |
+| burst\_interval        | int       | minutes between burst cycle initialization                           |
+| user\_note             | string    | a note to add to each reading                                        |
+| user\_value            | int       | a value to add to each reading                                       |
 
 #### get datalogger \[{property: $property}]
 
