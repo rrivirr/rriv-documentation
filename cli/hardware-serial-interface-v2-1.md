@@ -1,8 +1,8 @@
-# Hardware Serial Interface
+# rrivctl commands
 
 ## Overview
 
-This document defines a set of commands for configuring the rriv firmware installed on a compliant PCB.
+This document defines a set of commands offered by the rrivctl command line interface to configure devices compliant with the rriv hardware serial interface.
 
 
 
@@ -46,13 +46,45 @@ Performs an (optionally implemented) calibration on a resource
 
 ## Objects and Commands
 
-### Datalogger
+## Datalogger
 
-Data logger identification, timing, and metadata.
+#### set datalogger
 
-#### set datalogger {...}
+Name:  set datalogger
 
-{...} is JSON blob tha contains one or more datalogger parameter variables
+
+
+Synopsis: set datalogger \[OPTION]  \[ property   value ]
+
+
+
+Description:&#x20;
+
+Sets parameters relevant to the entire datalogger.  \
+\
+These may be set individually, or read from a json file to set multiple parameters in one command invocation.
+
+Setting a parameter individually:\
+`set datalogger logger_name water2`
+
+Use the -f option to load multiple parameters from a stored file:\
+`set datalogger -f configurations/stored_datalogger.json`
+
+#### All datalogger parameters
+
+| Parameter                      | Data Type | Description                                                          |
+| ------------------------------ | --------- | -------------------------------------------------------------------- |
+| logger\_name                   | string    | a name for the logger                                                |
+| site\_name                     | string    | site code                                                            |
+| deployment\_identifier         | string    | identify a deployment                                                |
+| interactive\_logging\_interval | int       | seconds to wait between measurements during interactive logging      |
+| sleep\_interval                | int       | minutes between wakes while deployed                                 |
+| start\_up\_delay               | int       | minutes to wait between wakeup and measurement sensor initialization |
+| bursts\_per\_cycle             | int       | number of bursts to run during each measurement cycle                |
+| burst\_interval                | int       | minutes between burst cycle initialization                           |
+| enable\_telemetry              | bool      | enable or disable LoRaWAN telemetry                                  |
+
+#### Example datalogger configuration file
 
 ```
 {	
@@ -68,17 +100,7 @@ Data logger identification, timing, and metadata.
 }
 ```
 
-| Parameter                      | Data Type | Description                                                          |
-| ------------------------------ | --------- | -------------------------------------------------------------------- |
-| logger\_name                   | string    | a name for the logger                                                |
-| site\_name                     | string    | site code                                                            |
-| deployment\_identifier         | string    | identify a deployment                                                |
-| interactive\_logging\_interval | int       | seconds to wait between measurements during interactive logging      |
-| sleep\_interval                | int       | minutes between wakes while deployed                                 |
-| start\_up\_delay               | int       | minutes to wait between wakeup and measurement sensor initialization |
-| bursts\_per\_cycle             | int       | number of bursts to run during each measurement cycle                |
-| burst\_interval                | int       | minutes between burst cycle initialization                           |
-| enable\_telemetry              | bool      | enable or disable LoRaWAN telemetry                                  |
+
 
 #### get datalogger&#x20;
 
