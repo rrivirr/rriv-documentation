@@ -44,21 +44,19 @@ Performs an (optionally implemented) calibration on a resource
 
 
 
-## Objects and Commands
-
 ## Datalogger
 
-#### set datalogger
+### set datalogger
 
-Name:  set datalogger
+#### Name &#x20;
 
+set datalogger
 
+#### Synopsis
 
-Synopsis: set datalogger \[OPTION]  \[ property   value ]
+set datalogger \[OPTION]  \[ property   value ]
 
-
-
-Description:&#x20;
+#### Description
 
 Sets parameters relevant to the entire datalogger.  \
 \
@@ -72,17 +70,14 @@ Use the -f option to load multiple parameters from a stored file:\
 
 #### All datalogger parameters
 
-| Parameter                      | Data Type | Description                                                          |
-| ------------------------------ | --------- | -------------------------------------------------------------------- |
-| logger\_name                   | string    | a name for the logger                                                |
-| site\_name                     | string    | site code                                                            |
-| deployment\_identifier         | string    | identify a deployment                                                |
-| interactive\_logging\_interval | int       | seconds to wait between measurements during interactive logging      |
-| sleep\_interval                | int       | minutes between wakes while deployed                                 |
-| start\_up\_delay               | int       | minutes to wait between wakeup and measurement sensor initialization |
-| bursts\_per\_cycle             | int       | number of bursts to run during each measurement cycle                |
-| burst\_interval                | int       | minutes between burst cycle initialization                           |
-| enable\_telemetry              | bool      | enable or disable LoRaWAN telemetry                                  |
+<table><thead><tr><th>Parameter</th><th width="142.9453125">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>logger_name</td><td>string</td><td>a name for the logger</td></tr><tr><td>site_name</td><td>string</td><td>site code</td></tr><tr><td>deployment_identifier</td><td>string</td><td>identify a deployment</td></tr><tr><td>interactive_logging_interval</td><td>int</td><td>seconds to wait between measurements during interactive logging</td></tr><tr><td>sleep_interval</td><td>int</td><td>minutes between wakes while deployed</td></tr><tr><td>start_up_delay</td><td>int</td><td>minutes to wait between wakeup and measurement sensor initialization</td></tr><tr><td>bursts_per_cycle</td><td>int</td><td>number of bursts to run during each measurement cycle</td></tr><tr><td>burst_interval</td><td>int</td><td>minutes between burst cycle initialization</td></tr><tr><td>enable_telemetry</td><td>bool</td><td>enable or disable LoRaWAN telemetry</td></tr><tr><td>mode</td><td>string</td><td>changes the mode the datalogger is in.  normally called as a single parameter command</td></tr></tbody></table>
+
+#### Datalogger modes
+
+| Mode        | Description                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------- |
+| interactive | Moves to interactive mode, which allows configuration                                     |
+| field       | Moves immediately to deployment, sleeps the devices and awaits the next measurement cycle |
 
 #### Example datalogger configuration file
 
@@ -102,34 +97,35 @@ Use the -f option to load multiple parameters from a stored file:\
 
 
 
-#### get datalogger&#x20;
+### get datalogger&#x20;
 
-* get datalogger&#x20;
+#### Name
 
-{command: get, object: datalogger}
+get datalogger
 
-Get datalogger configuration.&#x20;
+#### Synopsis
 
-#### set datalogger {mode: \<mode\_request>, ...}
+get datalogger
 
-{command: set, object: datalogger,&#x20;
+#### Description
 
-Changes the mode the datalogger is in
-
-| Mode Request        | Description                                                                                                       |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| interactive         | Moves to interactive mode, which allows configuration                                                             |
-| bench               | Moves to bench mode, which adds continuous serial output of measurements in addition to interactive mode features |
-| deploy              | Moves immediately to deployment, sleeps the devices and awaits the next measurement cycle                         |
-| deploy \<timestamp> | Moves to wait mode and sleeps the device. When timestamp is reached, the device wakes and deploys                 |
+Get datalogger configuration.   This command returns all datalogger configuration parameters as a JSON blob.
 
 
 
-### Sensor
+
+
+## Sensor
 
 Commands to configure installed sensors.
 
-#### set sensor \<id> {...}
+### set sensor
+
+#### Synopsis
+
+&#x20;set sensor \<id> -f \<FILE>
+
+#### Description
 
 Creates or updates a sensor configuration. If a sensor with the provided id is currently configured, it is updated. Otherwise, a new sensor configuration is created.
 
@@ -146,9 +142,15 @@ Example (for generic analog sensor):
 }
 ```
 
-#### get sensor \[id] \[{property: }]
+###
 
-* rrivctl shorthand get sensor \[id] \[property]
+### get sensor&#x20;
+
+#### Synopsis
+
+get sensor \<id>
+
+#### Description
 
 Get a sensor configuration, corresponding to the id. When called with a parameter argument, returns just the parameter requested. Otherwise returns the entire JSON blob.
 
@@ -167,13 +169,29 @@ get sensor also supports an aggregate property 'calibration' which returns all c
 }
 ```
 
-#### rm sensor \<id>
+### remove sensor
+
+#### Synopsis
+
+remove sensor \<id>  # remove a sensor by id
+
+#### Description
 
 Remove the sensor configuration matching the corresponding id
 
-#### ls sensor
+### list sensor
+
+#### Synopsis
+
+list sensor # list sensor configured sensors
+
+#### Description
 
 List all configured sensors in a tabluar format
+
+####
+
+### calibrate sensor
 
 #### calibrate sensor \<id> {action: $action, ...}
 
@@ -307,3 +325,15 @@ Top level commands that dump and load all for the device in one payload
 #### set
 
 #### reset \<STM\_ID>
+
+
+
+## Watch
+
+### rrivctl watch
+
+#### Description:
+
+Logs output from measurement cycle and telemetry events to the console.  Exit watch mode using Control-C.  Note that other commands cannot be sent to the device while watch is running.
+
+###
