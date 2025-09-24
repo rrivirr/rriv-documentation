@@ -280,21 +280,27 @@ get board epoch
 
 ####
 
-### Device
+## Device
 
-Top level commands that dump and load all for the device in one payload
+Commands relevant to the entire device
 
 ### get device
 
-### set device serial\_number
+Get details about the device, including unique identifiers and hardware assignment status.
 
-####
+```
+rrivctl get device
+```
 
 
 
 ## Watch
 
-### rrivctl watch
+### watch
+
+```
+rrivctl watch
+```
 
 #### Description:
 
