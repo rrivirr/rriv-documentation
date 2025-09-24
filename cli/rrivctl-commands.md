@@ -353,4 +353,25 @@ Watch output is in CSV format and contains all sensor values currently configure
 \--project a project name for organizing watch files\
 
 
-###
+## Cheat Sheet
+
+```
+rrivctl get datalogger 
+rrivctl set datalogger <parameter> <value>
+ 
+rrivctl list sensor 
+rrivctl set sensor <sensor_id> -f <filename.json> 
+rrivctl get sensor <sensor_id> 
+rrivctl remove sensor <sensor_id> 
+rrivctl calibrate sensor <sensor_id> point <value> 
+rrivctl calibrate sensor <sensor_id> list 
+rrivctl calibrate sensor <sensor_id> fit
+
+rrivctl get board version 
+rrivctl get board epoch 
+rrivctl set board epoch <epoch_time>  
+
+rrivctl get device 
+
+rrivctl watch
+```
