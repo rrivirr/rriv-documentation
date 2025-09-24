@@ -48,13 +48,11 @@ Performs an (optionally implemented) calibration on a resource
 
 ### set datalogger
 
-#### Name &#x20;
-
-set datalogger
-
 #### Synopsis
 
-set datalogger \[OPTION]  \[ property   value ]
+```
+set datalogger [option] <property> <value>
+```
 
 #### Description
 
@@ -99,13 +97,11 @@ Use the -f option to load multiple parameters from a stored file:\
 
 ### get datalogger&#x20;
 
-#### Name
-
-get datalogger
-
 #### Synopsis
 
-get datalogger
+```
+rrivctl get datalogger
+```
 
 #### Description
 
@@ -123,7 +119,9 @@ Commands to configure installed sensors.
 
 #### Synopsis
 
-&#x20;set sensor \<id> -f \<FILE>
+```
+ set sensor <sensor_id> -f <FILE>
+```
 
 #### Description
 
@@ -148,7 +146,9 @@ Example (for generic analog sensor):
 
 #### Synopsis
 
-get sensor \<id>
+```
+get sensor <sensor_id>
+```
 
 #### Description
 
@@ -173,7 +173,9 @@ get sensor also supports an aggregate property 'calibration' which returns all c
 
 #### Synopsis
 
-`remove sensor <sensor_id>` &#x20;
+```
+remove sensor <sensor_id>  
+```
 
 #### Description
 
@@ -183,7 +185,9 @@ Remove the sensor configuration matching the corresponding id
 
 #### Synopsis
 
-`list sensor`&#x20;
+```
+list sensor 
+```
 
 #### Description
 
@@ -195,7 +199,9 @@ List all configured sensors in a tabluar format
 
 #### Synposis
 
-calibrate sensor \<id> \<subcommand> \[params...]
+```
+calibrate sensor <id> <subcommand> [params...]
+```
 
 #### Descriptions
 
@@ -218,7 +224,9 @@ rrivctl watch                              # watch outputs on the console
 
 Sets a calibration point
 
-`calibrate sensor <sensor_id> point <value>`
+```
+calibrate sensor <sensor_id> point <value>
+```
 
 
 
@@ -226,7 +234,9 @@ Sets a calibration point
 
 Lists all the calibration points currently registered
 
-`calibrate sensor <sensor_id> list`
+```
+calibrate sensor <sensor_id> list
+```
 
 
 
@@ -234,11 +244,11 @@ Lists all the calibration points currently registered
 
 Calculates fit based on calibration points that have been registered, and stores the fit.
 
-`calibrate sensor <sensor_id> fit`&#x20;
+```
+calibrate sensor <sensor_id> fit 
+```
 
-####
 
-###
 
 ## Board
 
@@ -254,9 +264,8 @@ This is a custom namespace at the top level.
 
 ### board version
 
-```
-get board versioin
-```
+<pre><code><strong>rrivctl get board version
+</strong></code></pre>
 
 Get the board and firmware version information.
 
@@ -265,7 +274,7 @@ Get the board and firmware version information.
 ### set epoch
 
 ```
-set board epoch <epoch_time>
+rrivctl set board epoch <epoch_time>
 ```
 
 Set real time clock epoch time
@@ -275,7 +284,7 @@ Set real time clock epoch time
 Get the current real time clock epoch time stored on a RRIV device
 
 ```
-get board epoch
+rrivctl get board epoch
 ```
 
 ####
