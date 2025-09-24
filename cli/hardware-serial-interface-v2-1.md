@@ -173,7 +173,7 @@ get sensor also supports an aggregate property 'calibration' which returns all c
 
 #### Synopsis
 
-remove sensor \<id>  # remove a sensor by id
+`remove sensor <sensor_id>` &#x20;
 
 #### Description
 
@@ -183,7 +183,7 @@ Remove the sensor configuration matching the corresponding id
 
 #### Synopsis
 
-list sensor # list sensor configured sensors
+`list sensor`&#x20;
 
 #### Description
 
@@ -193,64 +193,54 @@ List all configured sensors in a tabluar format
 
 ### calibrate sensor
 
-#### calibrate sensor \<id> {action: $action, ...}
+#### Synposis
 
-**action: point**
+calibrate sensor \<id> \<subcommand> \[params...]
+
+#### Descriptions
+
+Subcommands to perform calibration steps on individual sensors.  These subcommands are used to set, view, and remove calibration points, and to perform the fit as implemented by the sensor driver.  The basic workflow is to add the number of calibration points required by the sensor driver, and then perform a fit.\
+
+
+**Example calibration workflow**
+
+```
+rrivctl calibrate sensor TEMP point 12.3   # set a calibration point at 12.3°  
+rrivctl calibrate sensor TEMP point 25.3   # set a calibration point at 25.3°
+rrivctl calibrate sensor list              # list calibration points        
+rrivctl calibrate sensor fit               # perform the calibration fit
+rrivctl watch                              # watch outputs on the console
+```
+
+
+
+**Subcommand: point**
 
 Sets a calibration point
 
-`calibrate sensor <id> point {point: \$point_value, tag: $tag}`
+`calibrate sensor <sensor_id> point <value>`
 
-**action: list, ls**
+
+
+**Subcommand: list**
 
 Lists all the calibration points currently registered
 
-`calibrate sensor <id> list`
+`calibrate sensor <sensor_id> list`
 
-**action: remove, rm**
 
-Removes a registered calilbration point
 
-`calibrate sensor <id> remove {tag: $tag}`
-
-**action: fit**
+**Subcommant: fit**
 
 Calculates fit based on calibration points that have been registered, and stores the fit.
 
-`calibrate sensor <id> fit { type: 'linear'}`
+`calibrate sensor <sensor_id> fit`&#x20;
 
-#### reset sensor {property: $property}
+####
 
-* reset sensor
-* reset sensor {property: $property}
-* reset sensor {property: 'calibration'}
-* rrivctl shorthand: reset sensor $property
+###
 
-### Telemeter
-
-Summary: telemeter set, get, rm, ls
-
-#### set telemeter \[id] {...}
-
-Creates or updates an telemeter configuration. If an actuator with the provided id is currently configured, it is updated. Otherwise, a new sensor configuration is created.
-
-#### get telemeter \<id> \[parameter]
-
-Get a actuator configuration, corresponding to the id. When called with a parameter argument, returns just the parameter requested. Otherwise returns the entire JSON blob.
-
-If id is not specified, returns a JSON array containing all telemeter configurations.
-
-#### rm telemeter \<id>
-
-Remove the telemeter configuration matching the corresponding id
-
-#### ls telemeter
-
-List all configured telemeters in a tabluar format
-
-#### reset telemeter {property: $property}
-
-### Board
+## Board
 
 The commands access features of the board itself and firmware metadata
 
@@ -262,69 +252,43 @@ This consists of three types of commands
 
 This is a custom namespace at the top level.
 
-#### board version
+### board version
 
 ```
-get board { property: 'version'}
+get board versioin
 ```
 
-rrivctl: get board version
+Get the board and firmware version information.
 
-#### board firmware warranty
+###
 
-```
-get board { property: 'firmware-warranty'}
-get board { property: 'firmware'}
-```
-
-#### board firmware conditions
-
-#### board firmware license
-
-#### board rtc set \<epoch>
+### set epoch
 
 ```
-set board {'epoch': \$epoch} 
+set board epoch <epoch_time>
 ```
 
 Set real time clock epoch time
 
-#### board rtc get
+### get epoch
 
 Get the current real time clock epoch time stored on a RRIV device
 
 ```
-get board { property: 'epoch'}
+get board epoch
 ```
 
-#### board restart
-
-```
-run board {'commmand' : 'restart'}
-```
-
-#### board i2c ls
-
-#### board memory check
-
-#### board mcu \[stop,sleep]
-
-#### board signal \[high,low]
-
-| Signal   | Description                        |
-| -------- | ---------------------------------- |
-| exADC    | enable/disable exADC               |
-| 3v3Boost | enable/disable 3v3 boost converted |
+####
 
 ### Device
 
 Top level commands that dump and load all for the device in one payload
 
-#### get
+### get device
 
-#### set
+### set device serial\_number
 
-#### reset \<STM\_ID>
+####
 
 
 
