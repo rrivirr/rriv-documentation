@@ -191,19 +191,19 @@ list sensor
 
 #### Description
 
-List all configured sensors in a tabluar format
+List all configured sensors
 
 ####
 
 ### calibrate sensor
 
-#### Synposis
+#### Synopsis
 
 ```
 calibrate sensor <id> <subcommand> [params...]
 ```
 
-#### Descriptions
+#### Description
 
 Subcommands to perform calibration steps on individual sensors.  These subcommands are used to set, view, and remove calibration points, and to perform the fit as implemented by the sensor driver.  The basic workflow is to add the number of calibration points required by the sensor driver, and then perform a fit.\
 
@@ -240,7 +240,7 @@ calibrate sensor <sensor_id> list
 
 
 
-**Subcommant: fit**
+**Subcommand: fit**
 
 Calculates fit based on calibration points that have been registered, and stores the fit.
 
@@ -262,30 +262,38 @@ This consists of three types of commands
 
 This is a custom namespace at the top level.
 
-### board version
+### get board
 
-<pre><code><strong>rrivctl get board version
-</strong></code></pre>
+#### Synopsis
 
-Get the board and firmware version information.
+{% code fullWidth="false" %}
+```
+rrivctl get board [version,epoch]
+```
+{% endcode %}
+
+#### Description
+
+Get the parameters specific to the board
+
+| Parameter | Data Type | Description                 |
+| --------- | --------- | --------------------------- |
+| epoch     | integer   | Epoch time                  |
+| version   | json      | board and firmware versions |
 
 ###
 
-### set epoch
+### set board
+
+#### Synopsis
 
 ```
 rrivctl set board epoch <epoch_time>
 ```
 
+#### Description
+
 Set real time clock epoch time
-
-### get epoch
-
-Get the current real time clock epoch time stored on a RRIV device
-
-```
-rrivctl get board epoch
-```
 
 ####
 
@@ -301,18 +309,48 @@ Get details about the device, including unique identifiers and hardware assignme
 rrivctl get device
 ```
 
-
+```
+{
+"gpio_bound": {
+"gpio1": "",
+"gpio2": "",
+"gpio3": "disabled",
+"gpio4": "disabled",
+"gpio5": "",
+"gpio6": "",
+"gpio7": "",
+"gpio8": "",
+"usart": ""
+},
+"serial_number": "A0000",
+"uid": "FF325D93737554657136931"
+}
+```
 
 ## Watch
 
 ### watch
 
+#### Synopsis
+
 ```
-rrivctl watch
+rrivctl watch [OPTIONS]
 ```
 
-#### Description:
+#### Description
+
+Watch data output and optionally log to an output file.
 
 Logs output from measurement cycle and telemetry events to the console.  Exit watch mode using Control-C.  Note that other commands cannot be sent to the device while watch is running.
+
+Watch output is in CSV format and contains all sensor values currently configured to measure.
+
+#### Options:
+
+-d, --debug enabled debugging output (default: false)\
+-f, --file name of a file to output sensor data to\
+-p, --path \<serial\_path> serial path of the RRIV device\
+\--project a project name for organizing watch files\
+
 
 ###
