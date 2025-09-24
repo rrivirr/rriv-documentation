@@ -12,11 +12,7 @@ Command documentation conventions:
 * \[optional]
 * {...} json blob
 
-RRIV compatible devices are configured using declarative commands as
-
-`<command> <object> {key: value, key:value}`
-
-or
+RRIV compatible devices are configured using declaritive commands transmitted as JSON over serial as
 
 `{command: <command>, object: <object>, key: value, key: value}`
 
@@ -44,18 +40,18 @@ Performs an (optionally implemented) calibration on a resource
 
 
 
-## Objects and Commands
+## Commands
 
 ### Datalogger
 
 Data logger identification, timing, and metadata.
 
-#### set datalogger {...}
-
-{...} is JSON blob tha contains one or more datalogger parameter variables
+#### datalogger set
 
 ```
 {	
+	"object" : "datalogger",
+	"command" : "set",
 	"logger_name" : "my device",
 	"site_name" : "OAK2:,
 	"deployment_identifier" : "X12",
@@ -81,8 +77,6 @@ Data logger identification, timing, and metadata.
 | enable\_telemetry              | bool      | enable or disable LoRaWAN telemetry                                  |
 
 #### get datalogger&#x20;
-
-* get datalogger&#x20;
 
 {command: get, object: datalogger}
 
