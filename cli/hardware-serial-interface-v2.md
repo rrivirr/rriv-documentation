@@ -40,9 +40,9 @@ Performs an (optionally implemented) calibration on a resource
 
 
 
-## Commands
 
-### Datalogger
+
+## Datalogger
 
 Data logger identification, timing, and metadata.
 
@@ -97,7 +97,7 @@ Changes the mode the datalogger is in
 
 
 
-### Sensor
+## Sensor
 
 Commands to configure installed sensors.
 
@@ -251,24 +251,63 @@ Get the current real time clock epoch time stored on a RRIV device
 get board { property: 'epoch'}
 ```
 
-#### board restart
+## Run Mode
 
 ```
-run board {'commmand' : 'restart'}
+{
+ "command-set" : "board",
+ "command" : "restart"
+}
 ```
 
-#### board i2c ls
+```
+{
+ "command-set" : "board",
+ "command" : "stop"
+}
+```
 
-#### board memory check
+```
+{
+ "command-set" : "board",
+ "command" : "sleep"
+}
+```
 
-#### board mcu \[stop,sleep]
+```
+```
 
-#### board signal \[high,low]
+### board list
 
-| Signal   | Description                        |
-| -------- | ---------------------------------- |
-| exADC    | enable/disable exADC               |
-| 3v3Boost | enable/disable 3v3 boost converted |
+```
+{
+    "command-set" : "board",
+    "command" : "list"
+    "object" : "i2c"
+}
+```
+
+### Check
+
+```
+{
+   "command-set" : "board",
+   "command" : "list",
+   "object" : "memory"
+}
+```
+
+### board set power&#x20;
+
+| Signal   | Description                          |
+| -------- | ------------------------------------ |
+| exADC    | enable/disable exADC                 |
+| 3v3Boost | enable/disable 3v3 boost converter   |
+| intADC   | enable/disable power to intADC ports |
+
+### Various Commands
+
+<table><thead><tr><th width="112.890625">set</th><th>command</th><th>object</th><th>params</th></tr></thead><tbody><tr><td>board</td><td>restart</td><td></td><td></td></tr><tr><td>board</td><td>sleep</td><td></td><td></td></tr><tr><td>board</td><td>stop</td><td></td><td></td></tr><tr><td>board</td><td>list</td><td>i2c</td><td></td></tr><tr><td>board</td><td>get</td><td>clock</td><td></td></tr><tr><td>board</td><td>list</td><td>adc</td><td></td></tr><tr><td>board</td><td>set</td><td>epoch</td><td></td></tr><tr><td>board</td><td>get </td><td>epoch</td><td></td></tr><tr><td>board</td><td>set (write)</td><td>gpio</td><td>id, &#x3C;high, low></td></tr><tr><td>board</td><td>get (read)</td><td>gpio</td><td>id</td></tr><tr><td>board</td><td>set</td><td>power</td><td>id, &#x3C;on, off></td></tr><tr><td>board</td><td>get</td><td>adc</td><td>&#x3C;ex, int>, [port]</td></tr><tr><td>board</td><td>get</td><td>eeprom</td><td></td></tr><tr><td></td><td>send</td><td>i2c</td><td></td></tr><tr><td></td><td>set</td><td>watchdog</td><td>[iwd, int], timeout </td></tr></tbody></table>
 
 ### Device
 
