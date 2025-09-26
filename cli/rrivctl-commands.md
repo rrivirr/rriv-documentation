@@ -353,14 +353,31 @@ Watch output is in CSV format and contains all sensor values currently configure
 \--project a project name for organizing watch files\
 
 
+## Connect
+
+### connect
+
+#### Synopsis
+
+```
+rrivctl connect
+```
+
+#### Description
+
+Opens the USB serial connection with the rriv board and firmware.
+
+
 ## Cheat Sheet
 
 ```
+rrivctl connect
+
 rrivctl get datalogger 
 rrivctl set datalogger <parameter> <value>
  
 rrivctl list sensor 
-rrivctl set sensor <sensor_id> -f <filename.json> 
+rrivctl set sensor <sensor_id> -f <filename.json>
 rrivctl get sensor <sensor_id> 
 rrivctl remove sensor <sensor_id> 
 rrivctl calibrate sensor <sensor_id> point <value> 
