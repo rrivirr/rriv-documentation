@@ -24,6 +24,7 @@
     * [RRIVCTL Sugars](cli/working-specifications/rrivctl-sugars.md)
     * [Hardware Serial Interface Original Spec](cli/working-specifications/hardware-serial-interface-v2.md)
     * [Legacy CLI commands](cli/working-specifications/cli_commands_v1.md)
+    * [Extended rrivctl commands](cli/working-specifications/rrivctl-commands.md)
   * [Hardware Serial Interface](cli/hardware-serial-interface-v2.md)
   * [rrivctl commands](cli/rrivctl-commands.md)
   * [Protocols](cli/protocols/README.md)
