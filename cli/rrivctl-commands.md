@@ -4,8 +4,6 @@
 
 This document defines a set of commands offered by the rrivctl command line interface to configure devices compliant with the rriv hardware serial interface.
 
-
-
 Command documentation conventions:
 
 * \<required>
@@ -42,8 +40,6 @@ Lists all resources of a particular type
 
 Performs an (optionally implemented) calibration on a resource
 
-
-
 ## Datalogger
 
 ### set datalogger
@@ -56,7 +52,7 @@ set datalogger [option] <property> <value>
 
 #### Description
 
-Sets parameters relevant to the entire datalogger.  \
+Sets parameters relevant to the entire datalogger.\
 \
 These may be set individually, or read from a json file to set multiple parameters in one command invocation.
 
@@ -68,7 +64,7 @@ Use the -f option to load multiple parameters from a stored file:\
 
 #### All datalogger parameters
 
-<table><thead><tr><th>Parameter</th><th width="142.9453125">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>logger_name</td><td>string</td><td>a name for the logger</td></tr><tr><td>site_name</td><td>string</td><td>site code</td></tr><tr><td>deployment_identifier</td><td>string</td><td>identify a deployment</td></tr><tr><td>interactive_logging_interval</td><td>int</td><td>seconds to wait between measurements during interactive logging</td></tr><tr><td>sleep_interval</td><td>int</td><td>minutes between wakes while deployed</td></tr><tr><td>start_up_delay</td><td>int</td><td>minutes to wait between wakeup and measurement sensor initialization</td></tr><tr><td>bursts_per_cycle</td><td>int</td><td>number of bursts to run during each measurement cycle</td></tr><tr><td>burst_interval</td><td>int</td><td>minutes between burst cycle initialization</td></tr><tr><td>enable_telemetry</td><td>bool</td><td>enable or disable LoRaWAN telemetry</td></tr><tr><td>mode</td><td>string</td><td>changes the mode the datalogger is in.  normally called as a single parameter command</td></tr></tbody></table>
+<table><thead><tr><th>Parameter</th><th width="142.9453125">Data Type</th><th>Description</th></tr></thead><tbody><tr><td>logger_name</td><td>string</td><td>a name for the logger</td></tr><tr><td>site_name</td><td>string</td><td>site code</td></tr><tr><td>deployment_identifier</td><td>string</td><td>identify a deployment</td></tr><tr><td>interactive_logging_interval</td><td>int</td><td>seconds to wait between measurements during interactive logging</td></tr><tr><td>sleep_interval</td><td>int</td><td>minutes between wakes while deployed</td></tr><tr><td>start_up_delay</td><td>int</td><td>minutes to wait between wakeup and measurement sensor initialization</td></tr><tr><td>bursts_per_cycle</td><td>int</td><td>number of bursts to run during each measurement cycle</td></tr><tr><td>burst_interval</td><td>int</td><td>minutes between burst cycle initialization</td></tr><tr><td>enable_telemetry</td><td>bool</td><td>enable or disable LoRaWAN telemetry</td></tr><tr><td>mode</td><td>string</td><td>changes the mode the datalogger is in. normally called as a single parameter command</td></tr></tbody></table>
 
 #### Datalogger modes
 
@@ -93,9 +89,7 @@ Use the -f option to load multiple parameters from a stored file:\
 }
 ```
 
-
-
-### get datalogger&#x20;
+### get datalogger
 
 #### Synopsis
 
@@ -105,11 +99,7 @@ rrivctl get datalogger
 
 #### Description
 
-Get datalogger configuration.   This command returns all datalogger configuration parameters as a JSON blob.
-
-
-
-
+Get datalogger configuration. This command returns all datalogger configuration parameters as a JSON blob.
 
 ## Sensor
 
@@ -142,7 +132,7 @@ Example (for generic analog sensor):
 
 ###
 
-### get sensor&#x20;
+### get sensor
 
 #### Synopsis
 
@@ -205,8 +195,7 @@ calibrate sensor <id> <subcommand> [params...]
 
 #### Description
 
-Subcommands to perform calibration steps on individual sensors.  These subcommands are used to set, view, and remove calibration points, and to perform the fit as implemented by the sensor driver.  The basic workflow is to add the number of calibration points required by the sensor driver, and then perform a fit.\
-
+Subcommands to perform calibration steps on individual sensors. These subcommands are used to set, view, and remove calibration points, and to perform the fit as implemented by the sensor driver. The basic workflow is to add the number of calibration points required by the sensor driver, and then perform a fit.\\
 
 **Example calibration workflow**
 
@@ -218,8 +207,6 @@ rrivctl calibrate sensor fit               # perform the calibration fit
 rrivctl watch                              # watch outputs on the console
 ```
 
-
-
 **Subcommand: point**
 
 Sets a calibration point
@@ -227,8 +214,6 @@ Sets a calibration point
 ```
 calibrate sensor <sensor_id> point <value>
 ```
-
-
 
 **Subcommand: list**
 
@@ -238,8 +223,6 @@ Lists all the calibration points currently registered
 calibrate sensor <sensor_id> list
 ```
 
-
-
 **Subcommand: fit**
 
 Calculates fit based on calibration points that have been registered, and stores the fit.
@@ -247,8 +230,6 @@ Calculates fit based on calibration points that have been registered, and stores
 ```
 calibrate sensor <sensor_id> fit 
 ```
-
-
 
 ## Board
 
@@ -276,12 +257,11 @@ rrivctl get board [version,epoch]
 
 Get the parameters specific to the board
 
-| Parameter | Data Type | Description                 |
-| --------- | --------- | --------------------------- |
-| epoch     | integer   | Epoch time                  |
-| version   | json      | board and firmware versions |
+<table><thead><tr><th width="119.7265625">Parameter</th><th width="124.6875">Data Type</th><th>Description</th><th>Response</th></tr></thead><tbody><tr><td>epoch</td><td>integer</td><td>Epoch time</td><td>seconds (integer)</td></tr><tr><td>version</td><td>json</td><td>board and firmware versions</td><td>{<br>"hv":"0.4.2",<br>"fv":firmware_version,<br>"br":branch,<br>"ref":gitref<br>}</td></tr></tbody></table>
 
-###
+
+
+
 
 ### set board
 
@@ -341,7 +321,7 @@ rrivctl watch [OPTIONS]
 
 Watch data output and optionally log to an output file.
 
-Logs output from measurement cycle and telemetry events to the console.  Exit watch mode using Control-C.  Note that other commands cannot be sent to the device while watch is running.
+Logs output from measurement cycle and telemetry events to the console. Exit watch mode using Control-C. Note that other commands cannot be sent to the device while watch is running.
 
 Watch output is in CSV format and contains all sensor values currently configured to measure.
 
@@ -350,8 +330,7 @@ Watch output is in CSV format and contains all sensor values currently configure
 -d, --debug enabled debugging output (default: false)\
 -f, --file name of a file to output sensor data to\
 -p, --path \<serial\_path> serial path of the RRIV device\
-\--project a project name for organizing watch files\
-
+\--project a project name for organizing watch files\\
 
 ## Connect
 
@@ -366,7 +345,6 @@ rrivctl connect
 #### Description
 
 Opens the USB serial connection with the rriv board and firmware.
-
 
 ## Cheat Sheet
 
