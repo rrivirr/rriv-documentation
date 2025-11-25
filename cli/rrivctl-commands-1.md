@@ -387,7 +387,7 @@ rrivctl library save <sensor|datalogger|device> <tag> [-s|--sensor-id sensor_id]
 
 Saves a sensor, datalogger, or full device configuration with a **tag** for future reuse.  The first argument to the save subcommand is **configuration type**, which determines the type of configuration to save.
 
-The configuration to be saved can loaded from a json file or from an attached device.  When the -f option is specified, the configuration is loaded and saved from the referenced file, without any changes to any attached device.  When -f is not specified, configuration is read from a device attached over USB.  Configuration type sensor requires the -s option if -f is not specified, in order to indicate which sensor configuration to read from the attached device.
+The configuration to be saved can loaded from a json file, an attached device, or the history of a device in the rriv database.  When the -f option is specified, the configuration is loaded and saved from the referenced file, without any changes to any attached device.  When -f is not specified, configuration is read from a device attached over USB.  Configuration type sensor requires the -s option if -f is not specified, in order to indicate which sensor configuration to read from the attached device.
 
 #### Options
 
@@ -399,7 +399,13 @@ The configuration to be saved can loaded from a json file or from an attached de
 
 &#x20;   Specify the sensor id, required when reading sensor configuration from a device over USB
 
+**-d, --device-id**
 
+&#x20;   Get the configuration to tag from device other than the currently attached device.
+
+**-t YYYY:MM:DD\[-HH:MM}**
+
+&#x20;   Specify the timestamp for a configuration stored in history for either the currently attached device or another device the user has access to in the rriv database, and tag this historical configuration with the specified tag.
 
 
 
@@ -498,5 +504,96 @@ Query and display library configurations, but do not apply to any attached devic
 
 The first argument specifies the configuration type.
 
-The second argument is either a named tag or a respository to read the confirmation from.  If no version is specified when repository is specified, then the latest version is shown.
+The second argument is either a named tag or a respository to read the confirmation from.  If no version is specified when repository is specified, then the latest version is shown.<br>
+
+Output of history get may be redirected to a file in order to store the configuration as a json file, for instance `rrivctl library get datalogger wetland > wetland_datalogger.json`<br>
+
+
+
+## History Subcommand Set
+
+### history list
+
+#### Synopsis
+
+```
+rrivctl history list <sensor|datalogger|device> 
+        [-d,--device-id device_id] [-s,--sensor-id sensor_id]
+        [-n entries]
+```
+
+#### Description
+
+List history of configuration changes for sensor, datalogger, or device configurations.&#x20;
+
+Output is tabluar, showing the time of the configuration change followed by the configuration changes made.
+
+#### Options
+
+**-d, --device-id**
+
+&#x20;  The device to list configuration history for.  If this option is not specified then the history of the currently attached device is listed.&#x20;
+
+**-n**&#x20;
+
+&#x20;   The number of entries to show at once.
+
+**-s, --sensor\_id**
+
+&#x20;   Specify the sensor id, required when listing sensor configuration history
+
+
+
+### history get
+
+#### Synopsis
+
+```
+rrivctl history get <sensor|datalogger|device> <YYYY:MM:DD>[THH:MM]
+        [-d,--device-id device_id] [-s,--sensor-id sensor_id]
+      
+```
+
+#### Description
+
+Show the full sensor, datalogger, or device configuration on a given date and time
+
+Specifying a date is mandatory, however time is optional.  If a time is not specified then the configuration display should be the most recent configuration before the the start of the specified date.
+
+Output of history get can be redirected to a file in order to store the configuration as a json file, for instance `rrivctl history get device wetland 2024-11-01T12:00 > desert_device.json`
+
+#### Options
+
+**-d, --device-id**
+
+&#x20;  The device to list configuration history for.  If this option is not specified then the history of the currently attached device is listed.&#x20;
+
+**-s, --sensor\_id**
+
+&#x20;   Specify the sensor id, required when listing sensor configuration history
+
+
+
+### history apply
+
+#### Synopsis
+
+```
+rrivctl history apply <sensor|datalogger|device> <YYYY:MM:DD>[THH:MM] [-d,--device-id device_id] [-s,--sensor-id sensor_id]
+      
+```
+
+#### Description
+
+Apply the full sensor, datalogger, or device configuration from a given date and time to the currently attached device.  Historical configurations to apply can be queried from either the currently attached device or any other device the user has access to.
+
+#### Options
+
+**-d, --device-id**
+
+&#x20;  The device history to query to get the configuration to apply.  If this option is not specified then the history of the currently attached is used to query the configuration to apply.
+
+**-s, --sensor\_id**
+
+&#x20;   Specify the sensor id, required when listing sensor configuration history
 
