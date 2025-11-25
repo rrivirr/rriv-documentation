@@ -403,7 +403,7 @@ The configuration to be saved can loaded from a json file or from an attached de
 
 
 
-## library apply
+### library apply
 
 #### Synopsis
 
@@ -429,7 +429,7 @@ Repositories have an optional owner prefix, as \[owner:]\<repository>, which spe
 
 
 
-## library publish
+### library publish
 
 #### Synopsis
 
@@ -461,7 +461,7 @@ Versions are computed automatically, as monotonically increasing integers.
 
 
 
-## library list
+### library list
 
 #### Synopsis
 
@@ -484,7 +484,7 @@ Repositories have an optional owner prefix, as \[owner:]\<repository>, which spe
 
 
 
-## library get
+### library get
 
 #### Synopsis
 
