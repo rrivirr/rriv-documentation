@@ -31,13 +31,13 @@ Case specifically for use with the Figaro NGM2611-E13, Adafruit DHT22, AtlasScie
 
 ## Diagrams
 
-![](case/case-assembly.png)\
+![](../.gitbook/assets/case-assembly.png)\
 Fig. 1 : Annotated Case Diagram
 
-![](case/SensorPanel.png)\
+![](../.gitbook/assets/SensorPanel.png)\
 Fig. 2 : Sensor Panel
 
-![s](case/BackPanel.png)\
+![s](../.gitbook/assets/BackPanel.png)\
 Fig. 3 : Back and Cage Panel
 
 ## Build Process
@@ -83,7 +83,7 @@ Fig. 3 : Back and Cage Panel
          1. Place an O-ring on the ledge created by the inner pipe inserted into the D-coupler in the above steps
          2. Check that at least 1.5mm of relief exists between the O-ring and the inner pipe segment for the entire circumference of the O-ring.
          3. The typical reason for a defect at this stage is incomplete insertion of the inner pipe segment into the D-coupler, which can easily compromise waterproofing.
-         4. Correct assembly results: ![](case/o-ring-rise.jpeg)
+         4. Correct assembly results: ![](../.gitbook/assets/o-ring-rise.jpeg)
    2. Assemble housing body
       1. Find 2ft length of 3" pipe and 2 O-Ring ledge assembles from (i)
       2. Check O-ring ledge assembly for correct height
@@ -102,7 +102,7 @@ Fig. 3 : Back and Cage Panel
       4. Slide a washer up to the cage plate
       5. Tighten a 2nd nut up to the cage plate.
       6. Repeat for each hole in the cage plate.
-      7. Result looks like this: ![](case/case-build-1.jpeg)
+      7. Result looks like this: ![](../.gitbook/assets/case-build-1.jpeg)
 4. Next, use nuts and washers to create a ledge for the sensor plate to rest on.
    1. Stand the housing from (2) upright, and turn the assembly from (iii) upside down and place on top of the housing. The cage plate will be facing upward.
    2. Mark each steel rod, using a marker or masking tape, 1 inch paste the height of the housing. This will be the location of the ledge.

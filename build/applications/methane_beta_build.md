@@ -13,7 +13,7 @@ Beta version RRIV loggers with methane (CH<sub>4</sub>) and carbon dioxide (CO<s
 * ABS Rubber Cement
 * [Molykote Grease 111](https://www.dupont.com/molykote.html)
 
-![Figure 1: ST Nucleo programming header](graphics/programmingBoard.jpg)
+![Figure 1: ST Nucleo programming header](../../.gitbook/assets/programmingBoard.jpg)
 
 _Figure 1: ST Nucleo programming header_
 
@@ -63,15 +63,15 @@ _Figure 1: ST Nucleo programming header_
 * To test the sensors type the command `start-logging` while the sensors are connected to the RRIV logger and press enter. This command will continuously report sensor values until you type `stop-logging`. Note: while the system is logging, values will continuously update sensor performance using the command start-logging. This means that when you are typing `stop-logging` the letters you type in will be broken up by new lines of data. The device will still read your typing as a single command so keep typing and press enter and the logger will stop.
 * To beginning using the logger type `deploy-now` and press enter. Any time the logger is powered up after this it will immediately enter deployment mode after 5 seconds and begin collecting data following the configurations set above. Thus, you can keep the device powered down and add the batteries in the field immediately before deployment.
 
-![Figure 2: RRIV Logger with the pins that are used to connect the programming board indicated by the orange box](graphics/rrivLoggerConnect.png)
+![Figure 2: RRIV Logger with the pins that are used to connect the programming board indicated by the orange box](../../.gitbook/assets/rrivLoggerConnect.png)
 
 _Figure 2: RRIV Logger with the pins that are used to connect the programming board indicated by the orange box. TODO: fix annotation, order for pins is opposite, Green-Blue-Purple_
 
-![Figure 3: a) The programming board connected to a RRIV logger using a set of five dupont jumper cables. b) a close-up of the programming board with the color of the jumper cable to be connected at each pin indicated.](graphics/programmingJumpers.png)
+![Figure 3: a) The programming board connected to a RRIV logger using a set of five dupont jumper cables. b) a close-up of the programming board with the color of the jumper cable to be connected at each pin indicated.](../../.gitbook/assets/programmingJumpers.png)
 
 _Figure 3: a) The programming board connected to a RRIV logger using a set of five dupont jumper cables. b) a close-up of the programming board with the color of the jumper cable to be connected at each pin indicated._
 
-![Figure 4: Methane and humidity sensors plugged into the analog to digital converter (ADC) ports.](graphics/connectingMethaneSensor.jpg)
+![Figure 4: Methane and humidity sensors plugged into the analog to digital converter (ADC) ports.](../../.gitbook/assets/connectingMethaneSensor.jpg)
 
 _Figure 4: Methane and humidity sensors plugged into the analog to digital converter (ADC) ports._
 
@@ -139,7 +139,7 @@ set-config {"loggerName":"writeOnBoard","siteName":"7char","deploymentIdentifier
 
 ## Sonde assembly
 
-![Figure 5: Assembly of the extended sensor housing](graphics/extendedCaseAssembly.png)_Figure 5: Assembly of the extended sensor housing_
+![Figure 5: Assembly of the extended sensor housing](../../.gitbook/assets/extendedCaseAssembly.png)_Figure 5: Assembly of the extended sensor housing_
 
 * Part assembly:
   * Use the ABS cement to secure the central housing ABS section into both the open sides of the couplers. Follow directions on the ABS cement to do so. Leave to cure in a ventilated space for 2hours
@@ -147,36 +147,36 @@ set-config {"loggerName":"writeOnBoard","siteName":"7char","deploymentIdentifier
 
 ### Case Assembly:
 
-1. Add 2 nuts onto each of the 6 steel threaded rods, around 1" and 8" from the same end, then add washers to them one from each end of the rod.![steel threaded rod assembly](graphics/rodAssembly.jpg)
-2. Add the 6 rods through an acrylic end plate (does not have the holes for the cable glands / sensors) and affix each rod with another washer and nut.![base plate assembly](graphics/basePlateAssembly.jpg)
-3. Apply Molykote to the O-ring of the cable gland and attach with sensors through the sensor plate, hand tighten or use pliers. If the O-ring is displaced the it is too tight.![sensors in sensor plate](graphics/sensorsInSensorPlate.jpg)
-4. Rest the sensor plate on the open set of washers and visually level the nuts as best as possible, the goal is to keep the plate flat.![sensor plate assembly](graphics/sensorsInPlate.jpg)
+1. Add 2 nuts onto each of the 6 steel threaded rods, around 1" and 8" from the same end, then add washers to them one from each end of the rod.![steel threaded rod assembly](../../.gitbook/assets/rodAssembly.jpg)
+2. Add the 6 rods through an acrylic end plate (does not have the holes for the cable glands / sensors) and affix each rod with another washer and nut.![base plate assembly](../../.gitbook/assets/basePlateAssembly.jpg)
+3. Apply Molykote to the O-ring of the cable gland and attach with sensors through the sensor plate, hand tighten or use pliers. If the O-ring is displaced the it is too tight.![sensors in sensor plate](../../.gitbook/assets/sensorsInSensorPlate.jpg)
+4. Rest the sensor plate on the open set of washers and visually level the nuts as best as possible, the goal is to keep the plate flat.![sensor plate assembly](../../.gitbook/assets/sensorsInPlate.jpg)
 5. If deploying follow next steps, if doing a submersion test, proceed directly to sealing.
 
 ### Deploying:
 
-1. Add RRIV board to battery assembly using Velcro.![board velcroed to battery assembly](graphics/boardVelcroedToBatteryAssembly.jpg)
-2. Place board + battery assembly into center of rods, taking care to ensure no wires go around the rods. Then orient so that the dowel rod can sit flat on the acrylic plate and connect the sensors.![Front](graphics/RRIVinCaseUncovered_front.jpg)![Back](graphics/RRIVinCaseUncovered_back.jpg)
+1. Add RRIV board to battery assembly using Velcro.![board velcroed to battery assembly](../../.gitbook/assets/boardVelcroedToBatteryAssembly.jpg)
+2. Place board + battery assembly into center of rods, taking care to ensure no wires go around the rods. Then orient so that the dowel rod can sit flat on the acrylic plate and connect the sensors.![Front](../../.gitbook/assets/RRIVinCaseUncovered_front.jpg)![Back](../../.gitbook/assets/RRIVinCaseUncovered_back.jpg)
 3. Set RRIV board to deployment mode by connecting to serial, checking sensors are working using `start-logging` (`stop-logging` when done checking), then using the command `deploy-now`.
-4. Slide housing around the assembly, check for wires trapped underneath, mainly the blue wire of the CO2 sensor, then add dessicant pack in from the top.![Add dessicant](graphics/RRIVcaseAddDessicant.jpg)
+4. Slide housing around the assembly, check for wires trapped underneath, mainly the blue wire of the CO2 sensor, then add dessicant pack in from the top.![Add dessicant](../../.gitbook/assets/RRIVcaseAddDessicant.jpg)
 5. Wrap copper mesh around the sensor cage and affix with cable ties.
 6. Proceed to sealing
 
 ### Sealing:
 
-1. Add top plate and hand tighten washers and nuts onto each rod.![seal top](graphics/RRIVcaseTopSealed.jpg)
+1. Add top plate and hand tighten washers and nuts onto each rod.![seal top](../../.gitbook/assets/RRIVcaseTopSealed.jpg)
 2. Make one round of tightening the nuts in pairs across from each other using one or two sets of pliers, making \~180 degree turns and hand tightening the other nuts after each pair.
 3. Hand tighten the nuts on the sensor plate up towards the top plate, then repeat step 4.
 4. Check each top nut by trying to make a 90 degree turn on each, they should all feel similarly tight.
 5. Visually check the seal formed on the O-ring against the acrylic plate, you should not see the O-ring deform or have anything trapped underneath it, restart if you do.
 
-![Figure 6: RRIV in extended sensor housing](graphics/RRIVinSensorCase.jpg)_Figure 6: RRIV in extended sensor housing_
+![Figure 6: RRIV in extended sensor housing](../../.gitbook/assets/RRIVinSensorCase.jpg)_Figure 6: RRIV in extended sensor housing_
 
 ### Submersion tests (conducted without RRIV electronics in case):
 
 * 30 minutes and 1 hour are good checking points for initial leaks. 24 hours for next day.
 * In the event of a severe leak during testing, check sensor cases have not also flooded which can happen if the water traverses through the wires/cables of the sensor. If they have flooded, the PTFE should be cut to allow the case to drain, then dried; sensor cases can be remade if the sensors are still functioning. Otherwise, allow sensor cables to dry fully before using them.
 
-![Stock tank submersion](graphics/submersionTestStockTank.jpg)_Submerge horizontally in a stock tank and weigh down the main housing to test the entire case_
+![Stock tank submersion](../../.gitbook/assets/submersionTestStockTank.jpg)_Submerge horizontally in a stock tank and weigh down the main housing to test the entire case_
 
-![5gal bucket submersion test](graphics/submersionTest5galBucket.jpg)_Submerge vertically in a 5gallon bucket to test just the sensor plate and cable glands_
+![5gal bucket submersion test](../../.gitbook/assets/submersionTest5galBucket.jpg)_Submerge vertically in a 5gallon bucket to test just the sensor plate and cable glands_

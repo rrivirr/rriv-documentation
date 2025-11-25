@@ -15,16 +15,16 @@
 * A cable must be built or modified to provide connectivity between the RRIV board and the Gravity analog pH meter. A female 3-pin JST-PH plug should be used for the end connecting to the pH meter. If using a RRIV v0.3 board, a female 3-pin JST-PH plug should be used for the end connecting to the RRIV board. For a RRIV v0.4 board, a female 3-pin _JST-XH_ plug should be used.
 * Note: the sequence of pins on the RRIV and pH meter boards differ (see Figure 1). Construction of the cable should should follow the details in Figure 2
 
-![Figure 1: Connecting Gravity analog sensors to the analog to digital converter (ADC) ports. A) RRIV V0.4 board with ADC interfaces indicated; B) Close-up of RRIV ADC interfaces indicating connection configuration; C) Glose up of Gravity pH meter interface. Note the sequence of pins for this connector differs from the sequence on the RRIV board](graphics/ADC_RRIV_Connect.jpg)**Figure 1:** Connecting Gravity analog sensors to the analog to digital converter (ADC) ports. A) RRIV V0.4 board with ADC interfaces indicated; B) Close-up of RRIV ADC interfaces indicating connection configuration; C) Glose up of Gravity pH meter interface. Note the sequence of pins for this connector differs from the sequence on the RRIV board.
+![Figure 1: Connecting Gravity analog sensors to the analog to digital converter (ADC) ports. A) RRIV V0.4 board with ADC interfaces indicated; B) Close-up of RRIV ADC interfaces indicating connection configuration; C) Glose up of Gravity pH meter interface. Note the sequence of pins for this connector differs from the sequence on the RRIV board](../../.gitbook/assets/ADC_RRIV_Connect.jpg)**Figure 1:** Connecting Gravity analog sensors to the analog to digital converter (ADC) ports. A) RRIV V0.4 board with ADC interfaces indicated; B) Close-up of RRIV ADC interfaces indicating connection configuration; C) Glose up of Gravity pH meter interface. Note the sequence of pins for this connector differs from the sequence on the RRIV board.
 
-![Figure 2: Connecting Gravity analog sensors to the analog to digital converter (ADC) ports with closeup views of the cables used for connecting.](graphics/ADC_Gravity_Cable.jpg)**Figure 2:** Connecting Gravity analog sensors to the analog to digital converter (ADC) ports with closeup views of the cables used for connecting.
+![Figure 2: Connecting Gravity analog sensors to the analog to digital converter (ADC) ports with closeup views of the cables used for connecting.](../../.gitbook/assets/ADC_Gravity_Cable.jpg)**Figure 2:** Connecting Gravity analog sensors to the analog to digital converter (ADC) ports with closeup views of the cables used for connecting.
 
 ### Case integration
 
 * The pH sensor is mounted into the sensor plate of the RRIV logger case using a M20 IP67 cable gland (Figure 3).
 * Apply lithium moly grease to the cable gland to help ensure a water-tight seal and preserve the life of the cable gland.
 
-![Figure 3: Images showing how the pH sensor is mounted in the sensor plate.](graphics/sensor_install.jpg)**Figure 3:** Images showing how the pH sensor is mounted in the sensor plate
+![Figure 3: Images showing how the pH sensor is mounted in the sensor plate.](../../.gitbook/assets/sensor_install.jpg)**Figure 3:** Images showing how the pH sensor is mounted in the sensor plate
 
 ## Application and CLI Use
 

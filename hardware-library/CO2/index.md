@@ -9,14 +9,12 @@
 ### Sensor Details
 
 technology: optical\
-range: 0-10000ppm +/-50ppm\
-
+range: 0-10000ppm +/-50ppm<br>
 
 ### RRIV Integration Details
 
 driver: atlas\_co2\
-case: developed\
-
+case: developed<br>
 
 ### Product Links
 
@@ -31,14 +29,12 @@ case: developed\
 ### Sensor Details
 
 technology: NDIR\
-range: 0-100000ppm\
-
+range: 0-100000ppm<br>
 
 ### RRIV Integration Details
 
 driver: under development\
-case: under development\
-
+case: under development<br>
 
 ### Product Links
 
@@ -50,14 +46,12 @@ case: under development\
 ### Sensor Details
 
 technology: photoacoustic\
-range: 400-5000ppm +/-50ppm\
-
+range: 400-5000ppm +/-50ppm<br>
 
 ### RRIV Integration Details
 
 driver: not developed\
-case: not developed\
-
+case: not developed<br>
 
 ### Product Links
 
@@ -68,14 +62,12 @@ case: not developed\
 ### Sensor Details
 
 technology: NDIR\
-range: 400-10,000ppm +/-30ppm\
-
+range: 400-10,000ppm +/-30ppm<br>
 
 ### RRIV Integration Details
 
 driver: not developed\
-case: not developed\
-
+case: not developed<br>
 
 ### Product Links
 

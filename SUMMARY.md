@@ -27,6 +27,7 @@
     * [Extended rrivctl commands](cli/working-specifications/rrivctl-commands.md)
   * [Hardware Serial Interface](cli/hardware-serial-interface-v2.md)
   * [rrivctl commands](cli/rrivctl-commands.md)
+  * [rrivctl commands v2](cli/rrivctl-commands-1.md)
   * [Protocols](cli/protocols/README.md)
     * [Thermistor Ring Protocols](cli/protocols/thermistor_ring.md)
 * [hardware-library](hardware-library/README.md)
