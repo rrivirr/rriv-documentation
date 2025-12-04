@@ -478,21 +478,25 @@ Versions are computed automatically, as monotonically increasing integers.
 #### Synopsis
 
 ```
-rrivctl library list <sensor|datalogger|device>
-rrivctl library list repository [repository]
+rrivctl library list <sensor|datalogger|device> [library_name] 
+     [--filter filter_string]
 ```
 
 #### Description
 
 List contents of configuration tags and repositories.
 
-When sensor, datalogger, or device configuration type list is specified, then all tags belonging to the current user are displayed.
+When sensor, datalogger, or device configuration type list is specified, then all libraries belonging to the current user are displayed. The format for display is:\
+`| configuration type | library_name | note |`&#x20;
 
-When repository list is specified, all repository names accessible to the current user are listed.  If the further specific repository name is specified, then all versions and their corresponding notes are listed.
+When library name is specified, then all library versions and their corresponding notes are listed.
 
-Repositories have an optional owner prefix, as \[owner:]\<repository>, which specified the owner of the repository.  When owner is not specified, the current user is used as the owner. &#x20;
+Libraries have an optional owner prefix, as \[owner:]\<library\_name>, which specified the owner of the repository.  When owner is not specified, the current user is used as the owner. &#x20;
 
-####
+#### Options
+
+-f, --filter filter\_string\
+&#x20;    Filter library names for a specified string
 
 
 
