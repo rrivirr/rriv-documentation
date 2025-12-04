@@ -380,16 +380,33 @@ rrivctl watch
 #### Synopsis
 
 ```
-rrivctl library save <sensor|datalogger|device> <tag> [-s|--sensor-id sensor_id] [-f|--filename filename.json]
+rrivctl library save <sensor|datalogger|device> <library_name> [source_reference]
+      [-s|--sensor-id sensor_id] 
+      [-f|--filename filename.json]
+      [--update]
 ```
 
 #### Description
 
-Saves a sensor, datalogger, or full device configuration with a **tag** for future reuse.  The first argument to the save subcommand is **configuration type**, which determines the type of configuration to save.
+Saves a sensor, datalogger, or full device configuration with a **name** for future reuse.  The first argument to the save subcommand is **configuration type**, which determines the type of configuration to save.
 
-The configuration to be saved can loaded from a json file, an attached device, or the history of a device in the rriv database.  When the -f option is specified, the configuration is loaded and saved from the referenced file, without any changes to any attached device.  When -f is not specified, configuration is read from a device attached over USB.  Configuration type sensor requires the -s option if -f is not specified, in order to indicate which sensor configuration to read from the attached device.
+The configuration to be saved can read from several sources:  a json file, the attached device, the history of any device in the rriv database.  When the -f option is specified, the configuration is loaded and saved from the referenced file, without any changes to any attached device.  When -f is not specified, configuration is read from a device attached over USB.  \
+\
+Configuration type sensor requires the -s option if -f is not specified, in order to indicate which sensor configuration to read from the attached device.
+
+Libraries are automatically versioned when additional saves are processed against the same library name.  The --update flag must be specified to save to a pre-existing tag.
+
+Library names are unique to the user, and the same library name cannot be used in multiple configuration types.
 
 #### Options
+
+**--attached**&#x20;
+
+&#x20;   Read configuration from the currently attached device.  This option is the default behavior.
+
+**-d, --device-id**
+
+&#x20;   Get the configuration to tag from device other than the currently attached device.
 
 **-f, --filename**
 
@@ -399,13 +416,11 @@ The configuration to be saved can loaded from a json file, an attached device, o
 
 &#x20;   Specify the sensor id, required when reading sensor configuration from a device over USB
 
-**-d, --device-id**
-
-&#x20;   Get the configuration to tag from device other than the currently attached device.
-
-**-t YYYY:MM:DD\[-HH:MM}**
+**-t, --time YYYY:MM:DD\[-HH:MM}**
 
 &#x20;   Specify the timestamp for a configuration stored in history for either the currently attached device or another device the user has access to in the rriv database, and tag this historical configuration with the specified tag.
+
+
 
 
 
@@ -414,16 +429,17 @@ The configuration to be saved can loaded from a json file, an attached device, o
 #### Synopsis
 
 ```
-rrivctl library apply <sensor|datalogger|device> <tag|repository[:version]> [-s|--sensor-id sensor_id]
+rrivctl library apply <sensor|datalogger|device> <library_name[:version]> 
+      [-s|--sensor-id sensor_id]
 ```
 
 #### Description
 
-Applies a saved library configuration to the attached device, as specified by saved tag.   The first argument to the save subcommand is **configuration type**, which indicated the type of configuration to look up in the library.<br>
+Applies a saved library configuration to the attached device, as specified by saved library name and an optional version.   \
+\
+The first argument to the save subcommand is **configuration type**, which indicated the type of configuration to look up in the library.<br>
 
-The configuration to apply may be determined by tag or repository.  A tag is attached to a configuration by the library save command, and is private to the user.  When a user uses the library publish command to make a library available to other users, the configuration is published a repository, where is versioned.  These configurations may be applied by specifying the repository name, and an optional version number.  If a version number is not specified, then the latest configuration published to the repository is applied.
-
-Repositories have an optional owner prefix, as \[owner:]\<repository>, which specified the owner of the repository.  When owner is not specified, the current user is used as the owner. &#x20;
+Repositories have an optional owner prefix, as \[owner:]\<library)name>, which specified the owner of the repository.  When owner is not specified, the current user is used as the owner. &#x20;
 
 #### Options
 
@@ -440,15 +456,13 @@ Repositories have an optional owner prefix, as \[owner:]\<repository>, which spe
 #### Synopsis
 
 ```
-rrivctl library publish <sensor|datalogger|device> <repository> [-s,--sensor-id sensor_id] [-t,--tag tag] [-n,--note note]
+rrivctl library publish <library_name> 
 ```
 
 #### Description
 
-Makes a sensor, datalogger, or device configuration available for use by other users via the library apply subcommand.  The configuration to publish may read directly from an attached device, or may be specified by a previously saved tag.  A repository name is always specified.  If a repository does not already exist in the cloud storage, it will be automatically created.
-
-If not tag is specified, then the configuration is read off the attached device.
-
+Makes a sensor, datalogger, or device configuration available for use by other users via the library apply subcommand.  The library to publish must be a pre-existing saved library in the user's account.\
+\
 Versions are computed automatically, as monotonically increasing integers.
 
 #### Options
@@ -456,14 +470,6 @@ Versions are computed automatically, as monotonically increasing integers.
 **-n, --note**
 
 &#x20;   Store a descriptive note with the published version
-
-**-s, --sensor\_id**
-
-&#x20;   Specify the sensor id, required when reading sensor configuration from a device over USB
-
-**-t, --tag**
-
-&#x20;   When specified, published the configuration stored under this tag to the named repository
 
 
 
@@ -495,7 +501,7 @@ Repositories have an optional owner prefix, as \[owner:]\<repository>, which spe
 #### Synopsis
 
 ```
-rrivctl library get <sensor|datalogger|device> <tag|repository[:version]>
+rrivctl library get <sensor|datalogger|device> <library_name[:version]>
 ```
 
 #### Description
@@ -504,7 +510,7 @@ Query and display library configurations, but do not apply to any attached devic
 
 The first argument specifies the configuration type.
 
-The second argument is either a named tag or a respository to read the confirmation from.  If no version is specified when repository is specified, then the latest version is shown.<br>
+The second argument is the name of the library, with an optional version number.  If the version number is not specified, then the latest version is shown.
 
 Output of history get may be redirected to a file in order to store the configuration as a json file, for instance `rrivctl library get datalogger wetland > wetland_datalogger.json`<br>
 
