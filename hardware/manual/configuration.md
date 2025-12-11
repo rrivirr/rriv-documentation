@@ -32,7 +32,8 @@ Note: The 5V rail is not powered by default on v4.0.2 boards.  An external suppl
 
 The 4th I2C port, J6, can be configured to supply 3.3V on its power pin even though the SB25, the 5V selection for the I2C ports, is installed.
 
-
+This deals with SB19, SB20, SB21, SB22, SB23, and SB24
+These SBs are used to connect I2C 4 to 3v3 and bypass the I2C level shifter
 
 ### Power routing
 
