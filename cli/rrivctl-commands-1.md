@@ -1,4 +1,4 @@
-# rrivctl commands v2
+# rrivctl commands
 
 ## Overview
 
