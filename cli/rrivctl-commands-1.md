@@ -247,11 +247,9 @@ This is a custom namespace at the top level.
 
 #### Synopsis
 
-{% code fullWidth="false" %}
 ```
 rrivctl get board [version,epoch]
 ```
-{% endcode %}
 
 #### Description
 
