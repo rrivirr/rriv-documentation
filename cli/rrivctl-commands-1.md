@@ -68,11 +68,6 @@ Use the -f option to load multiple parameters from a stored file:\
 
 #### Datalogger modes
 
-| Mode        | Description                                                                               |
-| ----------- | ----------------------------------------------------------------------------------------- |
-| interactive | Moves to interactive mode, which allows configuration                                     |
-| field       | Moves immediately to deployment, sleeps the devices and awaits the next measurement cycle |
-
 #### Example datalogger configuration file
 
 ```
@@ -130,7 +125,7 @@ Example (for generic analog sensor):
 }
 ```
 
-###
+
 
 ### get sensor
 
@@ -255,12 +250,6 @@ rrivctl get board [version,epoch]
 
 Get the parameters specific to the board
 
-<table><thead><tr><th width="119.7265625">Parameter</th><th width="124.6875">Data Type</th><th>Description</th><th>Response</th></tr></thead><tbody><tr><td>epoch</td><td>integer</td><td>Epoch time</td><td>seconds (integer)</td></tr><tr><td>version</td><td>json</td><td>board and firmware versions</td><td>{<br>"hv":"0.4.2",<br>"fv":firmware_version,<br>"br":branch,<br>"ref":gitref<br>}</td></tr></tbody></table>
-
-
-
-
-
 ### set board
 
 #### Synopsis
@@ -344,6 +333,30 @@ rrivctl connect
 
 Opens the USB serial connection with the rriv board and firmware.
 
+## Data
+
+Commands relevant to data reported by a device
+
+### get data
+
+#### Synopsis
+
+```
+rrivctl get data <device_id> [start_date] [end_date]
+```
+
+#### Description
+
+Get data collected by a particular device
+
+The first parameter **device\_id** is any identifier linked to a device.  This can be the global unique name, the assigned device name within the context, the or the device's serial number.&#x20;
+
+The second and third parameter are optional start and end dates for querying by range.  The format is YYYY-MM-DD.  If start and end date are not specified, the command returns data from a default date range.
+
+Data is saved in a csv file at a path reported by the command upon completion.
+
+
+
 ## Cheat Sheet
 
 ```
@@ -386,41 +399,37 @@ rrivctl library save <sensor|datalogger|device> <library_name> [source_reference
 
 #### Description
 
-Saves a sensor, datalogger, or full device configuration with a **name** for future reuse.  The first argument to the save subcommand is **configuration type**, which determines the type of configuration to save.
+Saves a sensor, datalogger, or full device configuration with a **name** for future reuse. The first argument to the save subcommand is **configuration type**, which determines the type of configuration to save.
 
-The configuration to be saved can read from several sources:  a json file, the attached device, the history of any device in the rriv database.  When the -f option is specified, the configuration is loaded and saved from the referenced file, without any changes to any attached device.  When -f is not specified, configuration is read from a device attached over USB.  \
+The configuration to be saved can read from several sources: a json file, the attached device, the history of any device in the rriv database. When the -f option is specified, the configuration is loaded and saved from the referenced file, without any changes to any attached device. When -f is not specified, configuration is read from a device attached over USB.\
 \
 Configuration type sensor requires the -s option if -f is not specified, in order to indicate which sensor configuration to read from the attached device.
 
-Libraries are automatically versioned when additional saves are processed against the same library name.  The --update flag must be specified to save to a pre-existing tag.
+Libraries are automatically versioned when additional saves are processed against the same library name. The --update flag must be specified to save to a pre-existing tag.
 
 Library names are unique to the user, and the same library name cannot be used in multiple configuration types.
 
 #### Options
 
-**--attached**&#x20;
+**--attached**
 
-&#x20;   Read configuration from the currently attached device.  This option is the default behavior.
+Read configuration from the currently attached device. This option is the default behavior.
 
 **-d, --device-id**
 
-&#x20;   Get the configuration to tag from device other than the currently attached device.
+Get the configuration to tag from device other than the currently attached device.
 
 **-f, --filename**
 
-&#x20;   Specify a json file containing configuration to save. &#x20;
+Specify a json file containing configuration to save.
 
 **-s, --sensor\_id**
 
-&#x20;   Specify the sensor id, required when reading sensor configuration from a device over USB
+Specify the sensor id, required when reading sensor configuration from a device over USB
 
 **-t, --time YYYY:MM:DD\[-HH:MM}**
 
-&#x20;   Specify the timestamp for a configuration stored in history for either the currently attached device or another device the user has access to in the rriv database, and tag this historical configuration with the specified tag.
-
-
-
-
+Specify the timestamp for a configuration stored in history for either the currently attached device or another device the user has access to in the rriv database, and tag this historical configuration with the specified tag.
 
 ### library apply
 
@@ -433,21 +442,17 @@ rrivctl library apply <sensor|datalogger|device> <library_name[:version]>
 
 #### Description
 
-Applies a saved library configuration to the attached device, as specified by saved library name and an optional version.   \
+Applies a saved library configuration to the attached device, as specified by saved library name and an optional version.\
 \
 The first argument to the save subcommand is **configuration type**, which indicated the type of configuration to look up in the library.<br>
 
-Repositories have an optional owner prefix, as \[owner:]\<library)name>, which specified the owner of the repository.  When owner is not specified, the current user is used as the owner. &#x20;
+Repositories have an optional owner prefix, as \[owner:]\<library)name>, which specified the owner of the repository. When owner is not specified, the current user is used as the owner.
 
 #### Options
 
 **-s, --sensor\_id**
 
-&#x20;   Optionally a sensor id to create or update when applying a tagged sensor configuration.  If this option is not set, then a sensor id is automatically generated.
-
-
-
-
+Optionally a sensor id to create or update when applying a tagged sensor configuration. If this option is not set, then a sensor id is automatically generated.
 
 ### library publish
 
@@ -459,7 +464,7 @@ rrivctl library publish <library_name>
 
 #### Description
 
-Makes a sensor, datalogger, or device configuration available for use by other users via the library apply subcommand.  The library to publish must be a pre-existing saved library in the user's account.\
+Makes a sensor, datalogger, or device configuration available for use by other users via the library apply subcommand. The library to publish must be a pre-existing saved library in the user's account.\
 \
 Versions are computed automatically, as monotonically increasing integers.
 
@@ -467,9 +472,7 @@ Versions are computed automatically, as monotonically increasing integers.
 
 **-n, --note**
 
-&#x20;   Store a descriptive note with the published version
-
-
+Store a descriptive note with the published version
 
 ### library list
 
@@ -485,18 +488,16 @@ rrivctl library list <sensor|datalogger|device> [library_name]
 List contents of configuration tags and repositories.
 
 When sensor, datalogger, or device configuration type list is specified, then all libraries belonging to the current user are displayed. The format for display is:\
-`| configuration type | library_name | note |`&#x20;
+`| configuration type | library_name | note |`
 
 When library name is specified, then all library versions and their corresponding notes are listed.
 
-Libraries have an optional owner prefix, as \[owner:]\<library\_name>, which specified the owner of the repository.  When owner is not specified, the current user is used as the owner. &#x20;
+Libraries have an optional owner prefix, as \[owner:]\<library\_name>, which specified the owner of the repository. When owner is not specified, the current user is used as the owner.
 
 #### Options
 
 -f, --filter filter\_string\
-&#x20;    Filter library names for a specified string
-
-
+Filter library names for a specified string
 
 ### library get
 
@@ -512,11 +513,9 @@ Query and display library configurations, but do not apply to any attached devic
 
 The first argument specifies the configuration type.
 
-The second argument is the name of the library, with an optional version number.  If the version number is not specified, then the latest version is shown.
+The second argument is the name of the library, with an optional version number. If the version number is not specified, then the latest version is shown.
 
 Output of history get may be redirected to a file in order to store the configuration as a json file, for instance `rrivctl library get datalogger wetland > wetland_datalogger.json`<br>
-
-
 
 ## History Subcommand Set
 
@@ -532,7 +531,7 @@ rrivctl history list <sensor|datalogger|device>
 
 #### Description
 
-List history of configuration changes for sensor, datalogger, or device configurations.&#x20;
+List history of configuration changes for sensor, datalogger, or device configurations.
 
 Output is tabluar, showing the time of the configuration change followed by the configuration changes made.
 
@@ -540,17 +539,15 @@ Output is tabluar, showing the time of the configuration change followed by the 
 
 **-d, --device-id**
 
-&#x20;  The device to list configuration history for.  If this option is not specified then the history of the currently attached device is listed.&#x20;
+The device to list configuration history for. If this option is not specified then the history of the currently attached device is listed.
 
-**-n**&#x20;
+**-n**
 
-&#x20;   The number of entries to show at once.
+The number of entries to show at once.
 
 **-s, --sensor\_id**
 
-&#x20;   Specify the sensor id, required when listing sensor configuration history
-
-
+Specify the sensor id, required when listing sensor configuration history
 
 ### history get
 
@@ -566,7 +563,7 @@ rrivctl history get <sensor|datalogger|device> <YYYY:MM:DD>[THH:MM]
 
 Show the full sensor, datalogger, or device configuration on a given date and time
 
-Specifying a date is mandatory, however time is optional.  If a time is not specified then the configuration display should be the most recent configuration before the the start of the specified date.
+Specifying a date is mandatory, however time is optional. If a time is not specified then the configuration display should be the most recent configuration before the the start of the specified date.
 
 Output of history get can be redirected to a file in order to store the configuration as a json file, for instance `rrivctl history get device wetland 2024-11-01T12:00 > desert_device.json`
 
@@ -574,13 +571,11 @@ Output of history get can be redirected to a file in order to store the configur
 
 **-d, --device-id**
 
-&#x20;  The device to list configuration history for.  If this option is not specified then the history of the currently attached device is listed.&#x20;
+The device to list configuration history for. If this option is not specified then the history of the currently attached device is listed.
 
 **-s, --sensor\_id**
 
-&#x20;   Specify the sensor id, required when listing sensor configuration history
-
-
+Specify the sensor id, required when listing sensor configuration history
 
 ### history apply
 
@@ -593,15 +588,14 @@ rrivctl history apply <sensor|datalogger|device> <YYYY:MM:DD>[THH:MM] [-d,--devi
 
 #### Description
 
-Apply the full sensor, datalogger, or device configuration from a given date and time to the currently attached device.  Historical configurations to apply can be queried from either the currently attached device or any other device the user has access to.
+Apply the full sensor, datalogger, or device configuration from a given date and time to the currently attached device. Historical configurations to apply can be queried from either the currently attached device or any other device the user has access to.
 
 #### Options
 
 **-d, --device-id**
 
-&#x20;  The device history to query to get the configuration to apply.  If this option is not specified then the history of the currently attached is used to query the configuration to apply.
+The device history to query to get the configuration to apply. If this option is not specified then the history of the currently attached is used to query the configuration to apply.
 
 **-s, --sensor\_id**
 
-&#x20;   Specify the sensor id, required when listing sensor configuration history
-
+Specify the sensor id, required when listing sensor configuration history
