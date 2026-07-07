@@ -12,8 +12,8 @@ https://api.rriv.org/data/readings/{eui}
 
 
 ## cURLs
-curl https://api.rriv.org/data/readings/ac1f09fffe1397e7
+```curl https://api.rriv.org/data/readings/ac1f09fffe1397e7```
 
-curl 'https://api.rriv.org/data/readings/ac1f09fffe1397e7?rangeStart=2025-01-01&rangeEnd=2025-12-31'
+```curl 'https://api.rriv.org/data/readings/ac1f09fffe1397e7?rangeStart=2025-01-01&rangeEnd=2025-12-31'```
 
-curl 'https://api.rriv.org/data/readings/ac1f09fffe1397e7?rangeStart=2025-01-01&rangeEnd=2025-12-31&format=csv' > out
+```curl 'https://api.rriv.org/data/readings/ac1f09fffe1397e7?rangeStart=2025-01-01&rangeEnd=2025-12-31&format=csv' > out```
